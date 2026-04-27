@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Silver Jubilee – Anita & Ramesh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Great+Vibes&family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crimson:    #9B1B30;
+  --rose-deep:  #C2185B;
+  --rose-mid:   #E91E63;
+  --rose-light: #F48FB1;
+  --blush:      #FCE4EC;
+  --gold:       #C9A84C;
+  --gold-light: #F0D080;
+  --silver:     #C8D8E8;
+  --silver-bright: #E8F0F8;
+  --silver-glow:   #A0B8D0;
+  --dark-rose:  #4A0020;
+  --cream:      #FFF8F2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: radial-gradient(ellipse at 30% 20%, #0a0820 0%, #050415 50%, #000 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  font-family: 'EB Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* Floating petals on body bg */
+.bg-petal {
+  position: fixed; pointer-events: none; z-index: 0;
+  border-radius: 50% 0 50% 0;
+  animation: bgPetalFall linear infinite;
+  opacity: 0;
+}
+@keyframes bgPetalFall {
+  0%   { transform: translateY(-60px) translateX(0) rotate(0deg) scale(1); opacity: 0; }
+  10%  { opacity: .55; }
+  90%  { opacity: .45; }
+  100% { transform: translateY(110vh) translateX(60px) rotate(360deg) scale(.7); opacity: 0; }
+}
+
+/* ══ CARD ══ */
+.card {
+  width: 680px;
+  max-width: 100%;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow:
+    0 0 0 1px rgba(180,210,255,0.25),
+    0 0 60px rgba(100,150,230,0.2),
+    0 0 140px rgba(60,80,180,0.18),
+    0 60px 120px rgba(0,0,0,0.85);
+  animation: cardBreath 6s ease-in-out infinite;
+}
+@keyframes cardBreath {
+  0%,100% { box-shadow: 0 0 0 1px rgba(180,210,255,0.25), 0 0 60px rgba(100,150,230,0.2), 0 0 140px rgba(60,80,180,0.18), 0 60px 120px rgba(0,0,0,0.85); }
+  50%      { box-shadow: 0 0 0 1px rgba(200,220,255,0.38), 0 0 90px rgba(130,170,255,0.3), 0 0 200px rgba(80,100,220,0.25), 0 60px 120px rgba(0,0,0,0.85); }
+}
+
+/* ══ BACKGROUNDS ══ */
+.bg-base {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 0%,  rgba(250,248,255,0.98) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 5%  30%,  rgba(235,240,255,0.70) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 95% 30%,  rgba(235,240,255,0.70) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 55% at 50% 100%, rgba(240,248,255,0.95) 0%, transparent 65%),
+    linear-gradient(170deg, #f8f5ff 0%, #f0eeff 20%, #fff8ff 45%, #f0f5ff 75%, #f8faff 100%);
+}
+.bg-noise {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+.bg-shimmer {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(118deg, transparent 28%, rgba(200,210,255,0.15) 50%, transparent 72%);
+  background-size: 260% 260%;
+  animation: shimSweep 9s ease-in-out infinite;
+}
+@keyframes shimSweep {
+  0%,100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 100%; }
+}
+
+/* Silver dust sparkle overlay */
+.bg-sparkle {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  animation: sparkleShift 14s linear infinite;
+}
+@keyframes sparkleShift { 0%{opacity:.3} 50%{opacity:.7} 100%{opacity:.3} }
+
+/* ══ ORNATE BORDERS ══ */
+.brd-outer { position: absolute; inset: 7px;  z-index: 10; border: 2px solid; border-image: linear-gradient(135deg,#b8cce0,#8090c0,#e0d8f8,#7080b8,#b8cce0) 1; pointer-events: none; animation: borderGlow 5s ease-in-out infinite; }
+@keyframes borderGlow { 0%,100%{opacity:.8} 50%{opacity:1} }
+.brd-inner { position: absolute; inset: 13px; z-index: 10; border: 1px solid rgba(140,160,220,0.35); pointer-events: none; }
+.brd-dot   { position: absolute; inset: 18px; z-index: 10; border: 1px dashed rgba(160,180,230,0.25); pointer-events: none; }
+
+/* ══ FLOWER ZONES ══ */
+.fz { position: absolute; pointer-events: none; z-index: 5; }
+.lotus-tl { top:-30px; left:-30px;   width:280px; height:280px; }
+.lotus-tr { top:-30px; right:-30px;  width:280px; height:280px; transform:scaleX(-1); }
+.lotus-bl { bottom:-20px; left:-20px;  width:250px; height:250px; }
+.lotus-br { bottom:-20px; right:-20px; width:250px; height:250px; transform:scaleX(-1); }
+.lotus-ml { top:38%; left:-18px; width:100px; height:100px; transform:translateY(-50%); }
+.lotus-mr { top:38%; right:-18px; width:100px; height:100px; transform:translateY(-50%) scaleX(-1); }
+
+/* Lotus petal animation */
+.fz { animation: lotusBreath 7s ease-in-out infinite; }
+.lotus-tr { animation-delay: 1.5s; }
+.lotus-bl { animation-delay: 3s; }
+.lotus-br { animation-delay: 4.5s; }
+.lotus-ml { animation-delay: 2s; }
+.lotus-mr { animation-delay: 3.5s; }
+@keyframes lotusBreath {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.04) rotate(1deg); }
+}
+.lotus-tr { animation-name: lotusBreathR; }
+.lotus-br { animation-name: lotusBreathR; }
+.lotus-mr { animation-name: lotusBreathMR; }
+@keyframes lotusBreathR {
+  0%,100% { transform: scaleX(-1) scale(1); }
+  50%      { transform: scaleX(-1) scale(1.04); }
+}
+@keyframes lotusBreathMR {
+  0%,100% { transform: translateY(-50%) scaleX(-1) scale(1); }
+  50%      { transform: translateY(-50%) scaleX(-1) scale(1.06); }
+}
+
+/* ══ FILIGREE CORNERS ══ */
+.fig { position:absolute; z-index:12; pointer-events:none; width:96px; height:96px; }
+.fig-tl { top:4px;    left:4px;   }
+.fig-tr { top:4px;    right:4px;  transform:scaleX(-1); }
+.fig-bl { bottom:4px; left:4px;   transform:scaleY(-1); }
+.fig-br { bottom:4px; right:4px;  transform:scale(-1,-1); }
+
+/* ══ FLOATING PETALS ══ */
+.petal {
+  position: absolute; pointer-events: none; z-index: 6;
+  border-radius: 50% 0 50% 0;
+  animation: petalDrift ease-in-out infinite;
+}
+@keyframes petalDrift {
+  0%   { transform: translateY(0)    translateX(0)   rotate(0deg)   scale(1);    opacity:.6; }
+  33%  { transform: translateY(-22px) translateX(9px)  rotate(15deg)  scale(1.1);  opacity:.9; }
+  66%  { transform: translateY(-12px) translateX(-7px) rotate(-8deg)  scale(0.9);  opacity:.7; }
+  100% { transform: translateY(0)    translateX(0)   rotate(0deg)   scale(1);    opacity:.6; }
+}
+
+/* ══ CONTENT ══ */
+.content {
+  position: relative; z-index: 8;
+  padding: 108px 72px 88px;
+  text-align: center;
+}
+
+/* fade-up */
+.fu { opacity:0; transform:translateY(26px); animation:fuUp .95s ease forwards; }
+@keyframes fuUp { to { opacity:1; transform:none; } }
+
+/* ══ TYPOGRAPHY ══ */
+.pre-header {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 9px; letter-spacing: 5.5px;
+  color: var(--silver-glow); text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(160,185,230,0.5);
+}
+
+/* Silver Jubilee number */
+.num-wrap {
+  display: inline-flex; align-items: flex-start; margin-bottom: 4px;
+}
+.num-31 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 138px; font-weight: 900; line-height: .88;
+  background: linear-gradient(150deg,
+    #e8f0ff 0%, #a0b8d8 12%, #d8e8ff 25%,
+    #7090b8 40%, #c0d4f0 55%, #4060a0 70%,
+    #a8c8e8 82%, #8090c0 92%, #e0e8ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 8px 28px rgba(100,140,220,.5)) drop-shadow(0 2px 5px rgba(60,90,170,.4));
+  animation: silverGlow 4.5s ease-in-out infinite;
+}
+@keyframes silverGlow {
+  0%,100% { filter: drop-shadow(0 8px 28px rgba(100,140,220,.5)) drop-shadow(0 2px 5px rgba(60,90,170,.4)); }
+  50%      { filter: drop-shadow(0 8px 55px rgba(160,200,255,.75)) drop-shadow(0 2px 10px rgba(100,140,220,.6)); }
+}
+.num-sup {
+  font-family: 'Playfair Display', serif; font-size: 42px;
+  font-weight:700; font-style:italic;
+  background: linear-gradient(135deg,#a0c0e0,#506080);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-top:16px; margin-left:5px;
+}
+
+/* Badge pill */
+.badge-pill {
+  display:inline-flex; align-items:center; gap:10px;
+  background: linear-gradient(135deg,rgba(200,220,255,.4),rgba(100,140,220,.18),rgba(220,230,255,.38));
+  border:1px solid rgba(120,160,220,.45); border-radius:40px;
+  padding:7px 26px; margin-bottom:12px;
+  backdrop-filter:blur(6px);
+  box-shadow:0 2px 20px rgba(100,140,220,.2), inset 0 1px 0 rgba(255,255,255,.5);
+  cursor: default;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.badge-pill:hover { transform: scale(1.04); box-shadow:0 4px 30px rgba(120,160,255,.35), inset 0 1px 0 rgba(255,255,255,.6); }
+.badge-pill span {
+  font-family:'Cinzel Decorative', serif; font-size:10.5px; letter-spacing:3px;
+  background:linear-gradient(90deg,#6080b0,#90b0d8,#6080b0);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  text-transform:uppercase;
+}
+.gem { width:9px; height:9px; background:radial-gradient(circle,#d0e8ff,#7090c0); border-radius:50%;
+  box-shadow:0 0 8px rgba(100,150,240,.7); animation:gemPulse 2.2s ease-in-out infinite; }
+@keyframes gemPulse {
+  0%,100% { box-shadow:0 0 7px rgba(100,150,240,.6); }
+  50%      { box-shadow:0 0 18px rgba(160,200,255,.95); }
+}
+
+.event-title {
+  font-family:'Great Vibes', cursive; font-size:74px;
+  color:var(--crimson); line-height:1.05; margin-bottom:6px;
+  text-shadow:0 4px 20px rgba(155,27,48,.2), 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* Divider */
+.div-line { display:flex; align-items:center; gap:10px; margin:10px auto; max-width:420px; }
+.div-rule { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(100,140,220,.55),transparent); }
+.div-center { display:flex; align-items:center; gap:6px; }
+.div-dia { width:6px; height:6px; background:var(--silver-glow); transform:rotate(45deg); box-shadow:0 0 8px rgba(120,160,230,.5); }
+.div-of { font-family:'Cinzel Decorative',serif; font-size:10px; letter-spacing:4px; color:var(--silver-glow); text-transform:uppercase; }
+
+.names {
+  font-family:'Great Vibes', cursive; font-size:92px;
+  color:var(--dark-rose); line-height:1.0; margin-bottom:4px;
+  text-shadow:0 5px 22px rgba(74,0,32,.2), 0 1px 0 rgba(255,255,255,.65);
+  cursor: default;
+  transition: text-shadow .4s ease;
+}
+.names:hover { text-shadow: 0 5px 30px rgba(140,50,80,.4), 0 1px 0 rgba(255,255,255,.8); }
+
+.heart {
+  color:var(--rose-mid); font-size:22px; margin:4px 0 14px;
+  display:block; animation:hb 2.2s ease-in-out infinite; cursor:default;
+}
+@keyframes hb {
+  0%,100% { transform:scale(1); } 15% { transform:scale(1.22); }
+  30% { transform:scale(1); }     44% { transform:scale(1.14); }
+  70% { transform:scale(1); }
+}
+
+.tagline {
+  font-family:'Cormorant Garamond', serif; font-size:18px; font-style:italic;
+  color:#7a1030; line-height:1.8; margin:0 auto 24px; max-width:400px;
+  font-weight:400; letter-spacing:.3px;
+}
+
+/* ══ DATE TAB (compact) ══ */
+.date-tab {
+  position:relative;
+  background:linear-gradient(135deg,rgba(25,30,65,.88),rgba(15,20,55,.93));
+  border:1px solid rgba(140,180,255,.28); border-radius:16px;
+  padding:12px 20px 14px; margin-bottom:10px; overflow:hidden;
+  box-shadow:0 3px 20px rgba(80,120,220,.18), inset 0 1px 0 rgba(200,220,255,.1);
+  transition:transform .3s ease;
+}
+.date-tab:hover { transform:translateY(-2px); }
+.date-tab::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,#b0c8f0,#c9a84c,#b0c8f0,transparent);
+}
+.date-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:7.5px; letter-spacing:4px;
+  color:#8090b8; text-transform:uppercase; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.date-tab-label::before,.date-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(140,180,255,.35),transparent);
+}
+.date-inner { display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+.date-piece { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.date-piece-num {
+  font-family:'Cinzel Decorative',serif; font-size:30px; font-weight:700;
+  color:#c8dcf8; line-height:1;
+  text-shadow:0 0 18px rgba(140,180,255,.5);
+}
+.date-piece-lbl {
+  font-family:'Cormorant Garamond',serif; font-size:11px; font-style:italic; color:#6070a0;
+}
+.date-sep {
+  font-family:'Cinzel Decorative',serif; font-size:20px; color:#4060a0; margin-top:-4px; opacity:.55;
+}
+.date-full-text {
+  font-family:'Cormorant Garamond',serif; font-size:12.5px; font-style:italic;
+  color:#7080a8; margin-top:8px; letter-spacing:.5px;
+}
+
+/* ══ LIVE CLOCK TAB ══ */
+.clock-tab {
+  position:relative;
+  background:linear-gradient(135deg,rgba(10,20,50,.95),rgba(5,15,45,.98));
+  border:1px solid rgba(100,160,255,.38); border-radius:18px;
+  padding:16px 24px 18px; margin-bottom:10px; overflow:hidden;
+  box-shadow:0 6px 34px rgba(60,100,220,.3), inset 0 1px 0 rgba(200,220,255,.12);
+}
+.clock-tab::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,#5080d0,#a0c8ff,#5080d0,transparent);
+  animation:clockBorder 3s ease-in-out infinite;
+}
+@keyframes clockBorder { 0%,100%{opacity:.6;} 50%{opacity:1;} }
+.clock-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:7.5px; letter-spacing:4px;
+  color:#7090c0; text-transform:uppercase; margin-bottom:14px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.clock-tab-label::before,.clock-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(100,160,255,.38),transparent);
+}
+.clock-display { display:flex; align-items:flex-start; justify-content:center; gap:0; margin-bottom:10px; }
+.clock-segment { display:flex; flex-direction:column; align-items:center; }
+.clock-digits {
+  font-family:'Cinzel Decorative',serif; font-size:56px; font-weight:900; line-height:1;
+  background:linear-gradient(180deg,#e8f4ff 0%,#90bce8 55%,#4878c0 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 14px rgba(100,180,255,.65));
+  min-width:86px; text-align:center;
+}
+.clock-digits-lbl {
+  font-family:'Cormorant Garamond',serif; font-size:9.5px; font-style:italic;
+  color:#3858a0; letter-spacing:2px; text-transform:uppercase; margin-top:3px;
+}
+.clock-colon {
+  font-family:'Cinzel Decorative',serif; font-size:48px; font-weight:900;
+  color:#2848a0; line-height:1; padding:0 3px; margin-top:2px;
+  animation:colonBlink 1s step-end infinite;
+}
+@keyframes colonBlink { 0%,100%{opacity:1;} 50%{opacity:.08;} }
+.clock-bottom { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:2px; }
+.ampm-badge {
+  font-family:'Cinzel Decorative',serif; font-size:16px; font-weight:700; letter-spacing:3px;
+  background:linear-gradient(135deg,#70a0d0,#a0c8e8);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 8px rgba(100,160,255,.5));
+}
+.live-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(0,200,100,.12); border:1px solid rgba(0,200,100,.3);
+  border-radius:20px; padding:3px 12px;
+  font-family:'Cinzel Decorative',serif; font-size:6px; letter-spacing:2.5px;
+  color:#40e090; text-transform:uppercase;
+}
+.live-dot {
+  width:5px; height:5px; background:#40e090; border-radius:50%;
+  animation:livePulse 1.2s ease-in-out infinite;
+}
+@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.3;transform:scale(.6);} }
+.clock-note {
+  font-family:'Cormorant Garamond',serif; font-size:12px; font-style:italic;
+  color:#455878; margin-top:8px; letter-spacing:.3px;
+}
+#toggleFormat:hover, #toggleTZ:hover {
+  background:rgba(100,160,255,.22); border-color:rgba(100,160,255,.6);
+  color:#c0d8f8; transform:translateY(-1px);
+  box-shadow:0 3px 12px rgba(80,140,255,.2);
+}
+.date-tab { cursor:pointer; }
+.date-tab:hover .date-piece-num { text-shadow: 0 0 25px rgba(160,200,255,.8); }
+
+/* ══ COUNTDOWN TAB ══ */
+.countdown-tab {
+  position:relative;
+  background:linear-gradient(135deg,rgba(20,25,60,.90),rgba(12,18,52,.95));
+  border:1px solid rgba(140,130,255,.28); border-radius:18px;
+  padding:16px 16px 18px; margin-bottom:14px; overflow:hidden;
+  box-shadow:0 5px 28px rgba(80,60,220,.22), inset 0 1px 0 rgba(200,210,255,.1);
+}
+.countdown-tab::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,#e91e63,#a0b8d8,#e91e63,transparent);
+}
+.countdown-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:7.5px; letter-spacing:4px;
+  color:#8070a8; text-transform:uppercase; margin-bottom:14px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.countdown-tab-label::before,.countdown-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(160,100,220,.38),transparent);
+}
+.countdown-wrap {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+}
+.cd-block {
+  background:rgba(255,255,255,.04); border:1px solid rgba(140,180,255,.14);
+  border-radius:12px; padding:12px 6px 10px; text-align:center;
+  transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+  position:relative; overflow:hidden;
+}
+.cd-block::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(140,180,255,.28),transparent);
+}
+.cd-block:hover { transform:translateY(-4px); background:rgba(100,140,255,.1); box-shadow:0 6px 20px rgba(80,120,220,.2); }
+.cd-num {
+  font-family:'Cinzel Decorative',serif; font-size:32px; font-weight:700;
+  background:linear-gradient(180deg,#d0e4ff 0%,#78a8e0 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  line-height:1; filter:drop-shadow(0 0 10px rgba(120,180,255,.55));
+}
+.cd-lbl {
+  font-family:'Cormorant Garamond',serif; font-size:11px; font-style:italic;
+  color:#6070a0; margin-top:5px; letter-spacing:.5px;
+}
+.cd-block.cd-event-past .cd-num {
+  background:linear-gradient(180deg,#90e8b0 0%,#40c080 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 10px rgba(60,200,120,.6));
+}
+
+@media (max-width:520px) {
+  .clock-digits { font-size:40px; min-width:60px; }
+  .clock-colon { font-size:34px; }
+  .date-piece-num { font-size:22px; }
+  .countdown-wrap { grid-template-columns:repeat(2,1fr); gap:8px; }
+  .cd-num { font-size:26px; }
+}
+
+/* ══ DETAIL CARDS ══ */
+.cards-grid {
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:10px; margin-bottom:14px;
+}
+.dc {
+  background:linear-gradient(160deg,rgba(255,255,255,.68),rgba(220,235,255,.48));
+  border:1px solid rgba(120,160,220,.28); border-radius:16px;
+  padding:18px 10px; display:flex; flex-direction:column; align-items:center; gap:5px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 4px 22px rgba(100,140,220,.1), inset 0 1px 0 rgba(255,255,255,.65);
+  transition:transform .3s ease, box-shadow .3s ease;
+  position:relative; overflow:hidden; cursor:default;
+}
+.dc::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--silver-glow),transparent);
+}
+.dc:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 12px 38px rgba(100,140,220,.25), inset 0 1px 0 rgba(255,255,255,.8); }
+.dc .ic { font-size:26px; margin-bottom:2px; transition:transform .3s ease; }
+.dc:hover .ic { transform: scale(1.2) rotate(10deg); }
+.dc .lbl {
+  font-family:'Cinzel Decorative',serif; font-size:7px; letter-spacing:2.5px;
+  color:var(--silver-glow); text-transform:uppercase;
+}
+.dc .val { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--dark-rose); line-height:1.2; }
+.dc .sub { font-family:'Cormorant Garamond',serif; font-size:13.5px; font-style:italic; color:var(--crimson); }
+
+/* ══ GUEST TAB ══ */
+.guest-box {
+  position:relative;
+  background:linear-gradient(135deg,rgba(220,230,255,.42),rgba(255,255,255,.5),rgba(230,235,255,.38));
+  border:1px solid rgba(120,160,220,.32); border-radius:14px;
+  padding:18px 24px 16px; margin-bottom:12px; overflow:hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.guest-box:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(100,140,220,.15); }
+.guest-box::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,var(--silver-glow),var(--gold),var(--silver-glow),transparent);
+}
+.guest-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:8px; letter-spacing:3.5px;
+  color:var(--silver-glow); text-transform:uppercase; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.guest-tab-label::before,.guest-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(120,160,220,.4),transparent);
+}
+.guest-main {
+  font-family:'Great Vibes',cursive; font-size:48px;
+  color:var(--dark-rose); line-height:1.1;
+  text-shadow:0 3px 12px rgba(74,0,32,.18);
+}
+.guest-sub {
+  font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic;
+  color:var(--crimson); margin-top:2px;
+}
+.guest-row {
+  display:flex; align-items:center; justify-content:center; gap:12px; margin-top:8px; flex-wrap:wrap;
+}
+.guest-chip {
+  font-family:'EB Garamond',serif; font-size:12.5px;
+  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(220,235,255,.55));
+  border:1px solid rgba(120,160,220,.28); border-radius:20px;
+  padding:4px 14px; color:var(--dark-rose);
+  box-shadow:0 2px 8px rgba(100,140,220,.1);
+  transition: transform .2s ease, box-shadow .2s ease; cursor:default;
+}
+.guest-chip:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(100,140,220,.2); }
+
+/* ══ ADDRESS BOX ══ */
+.addr-box {
+  position:relative;
+  background:linear-gradient(138deg,rgba(240,248,255,.55),rgba(255,255,255,.5));
+  border:1px solid rgba(120,160,220,.26); border-radius:14px;
+  padding:16px 22px 16px; margin-bottom:14px; overflow:hidden;
+  transition: transform .3s ease;
+}
+.addr-box:hover { transform: translateY(-2px); }
+.addr-box::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--silver-glow),var(--gold),transparent);
+}
+.addr-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:8px; letter-spacing:3.5px;
+  color:var(--gold); text-transform:uppercase; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.addr-tab-label::before,.addr-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(201,168,76,.5),transparent);
+}
+.addr-venue {
+  font-family:'Playfair Display',serif; font-size:16px; font-weight:700;
+  color:var(--dark-rose); margin-bottom:6px; line-height:1.3;
+}
+.addr-text {
+  font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic;
+  color:#7a1030; line-height:1.85; text-align:center;
+}
+.addr-text strong { font-weight:600; font-style:normal; color:var(--dark-rose); display:block; }
+
+.map-btn {
+  display:inline-flex; align-items:center; gap:7px;
+  margin-top:10px; padding:7px 20px;
+  background:linear-gradient(135deg,rgba(100,140,220,.15),rgba(220,235,255,.45));
+  border:1px solid rgba(100,140,220,.4); border-radius:24px;
+  font-family:'Cinzel Decorative',serif; font-size:8px; letter-spacing:2.5px;
+  color:var(--silver-glow); text-transform:uppercase; cursor:pointer;
+  box-shadow:0 2px 12px rgba(100,140,220,.15); transition:all .28s ease;
+  text-decoration:none;
+}
+.map-btn:hover { background:linear-gradient(135deg,rgba(100,140,220,.28),rgba(200,220,255,.6)); transform:translateY(-3px); box-shadow:0 6px 20px rgba(100,140,220,.3); }
+
+/* RSVP Row */
+.rsvp-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;
+}
+.rsvp-card {
+  background:linear-gradient(145deg,rgba(255,255,255,.65),rgba(220,235,255,.45));
+  border:1px solid rgba(120,160,220,.25); border-radius:14px;
+  padding:16px 14px; display:flex; flex-direction:column; align-items:center; gap:4px;
+  position:relative; overflow:hidden;
+  box-shadow:0 3px 18px rgba(100,140,220,.09), inset 0 1px 0 rgba(255,255,255,.65);
+  transition: transform .3s ease, box-shadow .3s ease; cursor:default;
+}
+.rsvp-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.rsvp-card:hover { transform:translateY(-4px) scale(1.01); box-shadow:0 8px 28px rgba(100,140,220,.18), inset 0 1px 0 rgba(255,255,255,.7); }
+.rsvp-card .ic { font-size:24px; transition: transform .3s ease; }
+.rsvp-card:hover .ic { transform: rotate(-10deg) scale(1.2); }
+.rsvp-card .lbl { font-family:'Cinzel Decorative',serif; font-size:7px; letter-spacing:2.5px; color:var(--gold); text-transform:uppercase; }
+.rsvp-card .val { font-family:'Playfair Display',serif; font-size:15px; font-weight:700; color:var(--dark-rose); }
+.rsvp-card .sub { font-family:'Cormorant Garamond',serif; font-size:12.5px; font-style:italic; color:var(--crimson); text-align:center; }
+
+/* Footer */
+.footer-script {
+  font-family:'Great Vibes',cursive; font-size:32px;
+  color:var(--crimson); margin-bottom:14px;
+  text-shadow:0 2px 12px rgba(155,27,48,.15);
+}
+.footer-caps {
+  font-family:'Cinzel Decorative',serif; font-size:8.5px;
+  letter-spacing:3px; color:var(--silver-glow); text-transform:uppercase;
+}
+
+/* ══ QR SECTION ══ */
+.qr-section {
+  position:relative;
+  background:linear-gradient(145deg,rgba(255,255,255,.7),rgba(220,235,255,.45));
+  border:1px solid rgba(120,160,220,.28); border-radius:16px;
+  padding:18px 20px 16px; margin-bottom:14px; overflow:hidden;
+}
+.qr-section::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,transparent,var(--silver-glow),var(--gold),var(--silver-glow),transparent);
+}
+.qr-tab-label {
+  font-family:'Cinzel Decorative',serif; font-size:8px; letter-spacing:3.5px;
+  color:var(--crimson); text-transform:uppercase; margin-bottom:12px;
+  display:flex; align-items:center; gap:8px; justify-content:center;
+}
+.qr-tab-label::before,.qr-tab-label::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(to right,transparent,rgba(120,160,220,.4),transparent);
+}
+.qr-inner {
+  display:flex; align-items:center; gap:18px; justify-content:center; flex-wrap:wrap;
+}
+.qr-wrap {
+  background:white; border-radius:12px; padding:10px;
+  box-shadow:0 4px 20px rgba(100,140,220,.2), inset 0 1px 0 rgba(255,255,255,.8);
+  border:1px solid rgba(120,160,220,.22);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.qr-caption {
+  font-family:'Cinzel Decorative',serif; font-size:7px; letter-spacing:2px;
+  color:var(--crimson); text-transform:uppercase;
+}
+.qr-info { flex:1; min-width:160px; text-align:left; }
+.qr-info-title {
+  font-family:'Playfair Display',serif; font-size:14px; font-weight:700;
+  color:var(--dark-rose); margin-bottom:6px;
+}
+.qr-info-text {
+  font-family:'Cormorant Garamond',serif; font-size:13px; font-style:italic;
+  color:var(--crimson); line-height:1.75;
+}
+.wa-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top:12px; padding:9px 24px;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  border-radius:28px; border:none; cursor:pointer;
+  font-family:'Cinzel Decorative',serif; font-size:8.5px; letter-spacing:2.5px;
+  color:white; text-transform:uppercase; text-decoration:none;
+  box-shadow:0 4px 18px rgba(18,140,126,.35); transition:all .28s ease;
+}
+.wa-btn:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(18,140,126,.5); }
+
+/* ══ RIPPLE EFFECT ══ */
+.ripple-host { position:relative; overflow:hidden; }
+.ripple-host .ripple-circle {
+  position:absolute; border-radius:50%;
+  background:rgba(160,190,255,.35);
+  transform:scale(0); animation:rippleOut .7s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes rippleOut { to { transform:scale(4); opacity:0; } }
+
+/* ══ RESPONSIVE MOBILE ══ */
+@media (max-width: 520px) {
+  .content { padding: 90px 28px 70px; }
+  .num-31 { font-size: 90px; }
+  .num-sup { font-size: 28px; }
+  .event-title { font-size: 52px; }
+  .names { font-size: 64px; }
+  .tagline { font-size: 15px; }
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .dc:last-child { grid-column: span 2; }
+  .rsvp-row { grid-template-columns: 1fr; }
+  .dt-grid { grid-template-columns: 1fr; }
+  .dt-divider-v { display:none; }
+  .dt-block { padding: 10px; }
+  .live-clock { font-size: 32px; }
+  .dt-value { font-size: 22px; }
+  .countdown-wrap { grid-template-columns: repeat(2,1fr); gap:8px; }
+  .cd-num { font-size: 18px; }
+  .lotus-tl, .lotus-tr { width:180px; height:180px; }
+  .lotus-bl, .lotus-br { width:160px; height:160px; }
+  .lotus-ml, .lotus-mr { display:none; }
+  .qr-inner { flex-direction:column; text-align:center; }
+  .qr-info { text-align:center; }
+  .fig { width:64px; height:64px; }
+  .brd-outer { inset:4px; }
+  .brd-inner { inset:9px; }
+  .brd-dot   { inset:13px; }
+  .badge-pill { padding:6px 16px; }
+  .badge-pill span { font-size:8.5px; letter-spacing:2px; }
+}
+@media (max-width: 380px) {
+  .content { padding: 75px 18px 60px; }
+  .num-31 { font-size: 72px; }
+  .event-title { font-size: 42px; }
+  .names { font-size: 52px; }
+}
+
+/* ══ CONTACT CARDS ══ */
+.contact-card {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  background: linear-gradient(145deg, rgba(255,255,255,.72), rgba(220,235,255,.5));
+  border: 1px solid rgba(120,160,220,.28); border-radius: 14px;
+  padding: 14px 10px 12px; text-decoration: none;
+  position: relative; overflow: hidden;
+  box-shadow: 0 3px 16px rgba(100,140,220,.1), inset 0 1px 0 rgba(255,255,255,.7);
+  transition: transform .28s ease, box-shadow .28s ease;
+  cursor: pointer;
+}
+.contact-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--silver-glow), var(--gold), var(--silver-glow), transparent);
+}
+.contact-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(100,140,220,.22), inset 0 1px 0 rgba(255,255,255,.8);
+}
+.contact-avatar {
+  font-size: 26px; line-height: 1;
+  transition: transform .3s ease;
+}
+.contact-card:hover .contact-avatar { transform: scale(1.18) rotate(-6deg); }
+.contact-name {
+  font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700;
+  color: var(--dark-rose); text-align: center; line-height: 1.2;
+}
+.contact-phone {
+  font-family: 'Cormorant Garamond', serif; font-size: 12.5px; font-style: italic;
+  color: var(--crimson); letter-spacing: .3px; text-align: center;
+}
+.contact-call-btn {
+  margin-top: 4px;
+  font-family: 'Cinzel Decorative', serif; font-size: 7px; letter-spacing: 2px;
+  color: var(--silver-glow); text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(100,140,220,.12), rgba(200,220,255,.3));
+  border: 1px solid rgba(120,160,220,.3); border-radius: 20px;
+  padding: 4px 12px;
+  transition: background .25s ease, color .25s ease;
+}
+.contact-card:hover .contact-call-btn {
+  background: linear-gradient(135deg, rgba(100,140,220,.25), rgba(180,210,255,.45));
+  color: #c8dcf8;
+}
+@media (max-width: 420px) {
+  #contactGrid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .contact-name { font-size: 11.5px; }
+  .contact-phone { font-size: 11px; }
+  .contact-avatar { font-size: 22px; }
+}
+
+
+.cursor-spark {
+  position:fixed; pointer-events:none; z-index:9999;
+  width:6px; height:6px; border-radius:50%;
+  background:radial-gradient(#c0d8ff,#6090d0);
+  animation:sparkFade .6s ease-out forwards;
+}
+@keyframes sparkFade {
+  0% { transform:scale(1); opacity:.9; }
+  100% { transform:scale(0) translateY(-10px); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Background falling petals -->
+<div class="bg-petal" style="width:9px;height:13px;background:radial-gradient(#fce4ec,#f06292);left:8%;animation-duration:12s;animation-delay:0s;top:-20px;"></div>
+<div class="bg-petal" style="width:7px;height:10px;background:radial-gradient(#e8f0ff,#a0b0d8);left:22%;animation-duration:15s;animation-delay:3s;top:-20px;"></div>
+<div class="bg-petal" style="width:10px;height:14px;background:radial-gradient(#fce4ec,#e91e63);left:38%;animation-duration:13s;animation-delay:6s;top:-20px;"></div>
+<div class="bg-petal" style="width:6px;height:9px;background:radial-gradient(#d8e8ff,#8090c0);left:55%;animation-duration:16s;animation-delay:1.5s;top:-20px;"></div>
+<div class="bg-petal" style="width:8px;height:12px;background:radial-gradient(#fce4ec,#c2185b);left:72%;animation-duration:11s;animation-delay:4.5s;top:-20px;"></div>
+<div class="bg-petal" style="width:7px;height:10px;background:radial-gradient(#e0eeff,#6080b0);left:88%;animation-duration:14s;animation-delay:8s;top:-20px;"></div>
+
+<div class="card" id="mainCard">
+
+<!-- Background layers -->
+<div class="bg-base"></div>
+<div class="bg-noise"></div>
+<div class="bg-shimmer"></div>
+
+<!-- Borders -->
+<div class="brd-outer"></div>
+<div class="brd-inner"></div>
+<div class="brd-dot"></div>
+
+<!-- ══ LOTUS — TOP LEFT ══ -->
+<svg class="fz lotus-tl" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lt1a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="22%" stop-color="#f8bbd0"/>
+      <stop offset="55%" stop-color="#f06292"/>
+      <stop offset="85%" stop-color="#c2185b"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lt1b" cx="50%" cy="15%" r="85%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="20%" stop-color="#f48fb1"/>
+      <stop offset="58%" stop-color="#e91e63"/>
+      <stop offset="88%" stop-color="#ad1457"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lt1Leaf" cx="40%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#a5d6a7"/>
+      <stop offset="55%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </radialGradient>
+    <filter id="lt1Shadow"><feDropShadow dx="1" dy="3" stdDeviation="6" flood-color="#880e4f" flood-opacity=".28"/></filter>
+  </defs>
+  <!-- Lily pads -->
+  <ellipse cx="115" cy="205" rx="85" ry="26" fill="url(#lt1Leaf)" opacity=".48"/>
+  <ellipse cx="160" cy="220" rx="60" ry="19" fill="url(#lt1Leaf)" opacity=".36"/>
+  <path d="M115 205 Q135 192 155 200" stroke="#1b5e20" stroke-width=".9" fill="none" opacity=".4"/>
+  <g filter="url(#lt1Shadow)">
+    <!-- Outer petals -->
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1b)" opacity=".65" transform="rotate(0 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1a)" opacity=".63" transform="rotate(36 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1b)" opacity=".61" transform="rotate(72 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1a)" opacity=".59" transform="rotate(108 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1b)" opacity=".57" transform="rotate(144 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1a)" opacity=".55" transform="rotate(180 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1b)" opacity=".53" transform="rotate(216 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1a)" opacity=".51" transform="rotate(252 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1b)" opacity=".49" transform="rotate(288 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt1a)" opacity=".47" transform="rotate(324 128 128)"/>
+    <!-- Middle layer -->
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1a)" opacity=".80" transform="rotate(18 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1b)" opacity=".78" transform="rotate(54 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1a)" opacity=".76" transform="rotate(90 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1b)" opacity=".74" transform="rotate(126 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1a)" opacity=".72" transform="rotate(162 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1b)" opacity=".70" transform="rotate(198 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1a)" opacity=".68" transform="rotate(234 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt1b)" opacity=".66" transform="rotate(270 128 128)"/>
+    <!-- Inner -->
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1a)" opacity=".92" transform="rotate(0 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1b)" opacity=".90" transform="rotate(45 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1a)" opacity=".88" transform="rotate(90 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1b)" opacity=".86" transform="rotate(135 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1a)" opacity=".84" transform="rotate(180 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1b)" opacity=".82" transform="rotate(225 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1a)" opacity=".80" transform="rotate(270 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt1b)" opacity=".78" transform="rotate(315 128 128)"/>
+    <!-- Pod -->
+    <circle cx="128" cy="128" r="18" fill="#f9e07a" opacity=".88"/>
+    <circle cx="128" cy="128" r="12" fill="#f0c040" opacity=".92"/>
+    <circle cx="123" cy="124" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="130" cy="123" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="126" cy="131" r="2.8" fill="#c47c10" opacity=".80"/>
+    <circle cx="133" cy="129" r="2.2" fill="#c47c10" opacity=".72"/>
+    <circle cx="121" cy="130" r="2.2" fill="#c47c10" opacity=".72"/>
+  </g>
+</svg>
+
+<!-- ══ LOTUS — TOP RIGHT ══ -->
+<svg class="fz lotus-tr" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lt2a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="22%" stop-color="#f8bbd0"/>
+      <stop offset="55%" stop-color="#f06292"/>
+      <stop offset="85%" stop-color="#c2185b"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lt2b" cx="50%" cy="15%" r="85%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="20%" stop-color="#ef9a9a"/>
+      <stop offset="55%" stop-color="#e53935"/>
+      <stop offset="88%" stop-color="#b71c1c"/>
+      <stop offset="100%" stop-color="#7f0000"/>
+    </radialGradient>
+    <radialGradient id="lt2Leaf" cx="40%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#a5d6a7"/>
+      <stop offset="55%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </radialGradient>
+    <filter id="lt2Shadow"><feDropShadow dx="1" dy="3" stdDeviation="6" flood-color="#880e4f" flood-opacity=".25"/></filter>
+  </defs>
+  <ellipse cx="115" cy="205" rx="85" ry="26" fill="url(#lt2Leaf)" opacity=".48"/>
+  <ellipse cx="160" cy="220" rx="60" ry="19" fill="url(#lt2Leaf)" opacity=".36"/>
+  <g filter="url(#lt2Shadow)">
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2b)" opacity=".65" transform="rotate(0 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2a)" opacity=".63" transform="rotate(36 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2b)" opacity=".61" transform="rotate(72 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2a)" opacity=".59" transform="rotate(108 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2b)" opacity=".57" transform="rotate(144 128 128)"/>
+    <ellipse cx="128" cy="128" rx="17" ry="62" fill="url(#lt2a)" opacity=".55" transform="rotate(180 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt2a)" opacity=".80" transform="rotate(18 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt2b)" opacity=".78" transform="rotate(54 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt2a)" opacity=".76" transform="rotate(90 128 128)"/>
+    <ellipse cx="128" cy="128" rx="13" ry="44" fill="url(#lt2b)" opacity=".74" transform="rotate(126 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt2a)" opacity=".92" transform="rotate(0 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt2b)" opacity=".90" transform="rotate(45 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt2a)" opacity=".88" transform="rotate(90 128 128)"/>
+    <ellipse cx="128" cy="128" rx="9" ry="28" fill="url(#lt2b)" opacity=".86" transform="rotate(135 128 128)"/>
+    <circle cx="128" cy="128" r="18" fill="#f9e07a" opacity=".88"/>
+    <circle cx="128" cy="128" r="12" fill="#f0c040" opacity=".92"/>
+    <circle cx="123" cy="124" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="130" cy="123" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="126" cy="131" r="2.8" fill="#c47c10" opacity=".80"/>
+  </g>
+</svg>
+
+<!-- ══ LOTUS — BOTTOM LEFT ══ -->
+<svg class="fz lotus-bl" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lb1a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="22%" stop-color="#f8bbd0"/>
+      <stop offset="55%" stop-color="#f06292"/>
+      <stop offset="85%" stop-color="#c2185b"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lb1b" cx="50%" cy="15%" r="85%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="20%" stop-color="#f48fb1"/>
+      <stop offset="58%" stop-color="#e91e63"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lb1Leaf" cx="40%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#a5d6a7"/>
+      <stop offset="55%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </radialGradient>
+    <filter id="lb1Shadow"><feDropShadow dx="1" dy="2" stdDeviation="5" flood-color="#880e4f" flood-opacity=".22"/></filter>
+  </defs>
+  <ellipse cx="110" cy="200" rx="80" ry="24" fill="url(#lb1Leaf)" opacity=".5"/>
+  <ellipse cx="155" cy="215" rx="55" ry="17" fill="url(#lb1Leaf)" opacity=".38"/>
+  <g filter="url(#lb1Shadow)">
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1b)" opacity=".65" transform="rotate(0 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1a)" opacity=".63" transform="rotate(36 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1b)" opacity=".61" transform="rotate(72 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1a)" opacity=".59" transform="rotate(108 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1b)" opacity=".57" transform="rotate(144 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb1a)" opacity=".55" transform="rotate(180 118 118)"/>
+    <ellipse cx="118" cy="118" rx="13" ry="42" fill="url(#lb1a)" opacity=".78" transform="rotate(18 118 118)"/>
+    <ellipse cx="118" cy="118" rx="13" ry="42" fill="url(#lb1b)" opacity=".76" transform="rotate(54 118 118)"/>
+    <ellipse cx="118" cy="118" rx="13" ry="42" fill="url(#lb1a)" opacity=".74" transform="rotate(90 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb1a)" opacity=".90" transform="rotate(0 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb1b)" opacity=".88" transform="rotate(45 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb1a)" opacity=".86" transform="rotate(90 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb1b)" opacity=".84" transform="rotate(135 118 118)"/>
+    <circle cx="118" cy="118" r="17" fill="#f9e07a" opacity=".88"/>
+    <circle cx="118" cy="118" r="11" fill="#f0c040" opacity=".92"/>
+    <circle cx="113" cy="114" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="120" cy="113" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="116" cy="121" r="2.8" fill="#c47c10" opacity=".80"/>
+  </g>
+</svg>
+
+<!-- ══ LOTUS — BOTTOM RIGHT ══ -->
+<svg class="fz lotus-br" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lb2a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="22%" stop-color="#f8bbd0"/>
+      <stop offset="55%" stop-color="#f06292"/>
+      <stop offset="85%" stop-color="#c2185b"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <radialGradient id="lb2b" cx="50%" cy="15%" r="85%">
+      <stop offset="0%" stop-color="#ffcdd2"/>
+      <stop offset="20%" stop-color="#ef9a9a"/>
+      <stop offset="55%" stop-color="#e53935"/>
+      <stop offset="88%" stop-color="#b71c1c"/>
+      <stop offset="100%" stop-color="#7f0000"/>
+    </radialGradient>
+    <radialGradient id="lb2Leaf" cx="40%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#a5d6a7"/>
+      <stop offset="55%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </radialGradient>
+    <filter id="lb2Shadow"><feDropShadow dx="1" dy="2" stdDeviation="5" flood-color="#880e4f" flood-opacity=".2"/></filter>
+  </defs>
+  <ellipse cx="110" cy="200" rx="80" ry="24" fill="url(#lb2Leaf)" opacity=".5"/>
+  <ellipse cx="155" cy="215" rx="55" ry="17" fill="url(#lb2Leaf)" opacity=".38"/>
+  <g filter="url(#lb2Shadow)">
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2b)" opacity=".65" transform="rotate(0 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2a)" opacity=".63" transform="rotate(36 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2b)" opacity=".61" transform="rotate(72 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2a)" opacity=".59" transform="rotate(108 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2b)" opacity=".57" transform="rotate(144 118 118)"/>
+    <ellipse cx="118" cy="118" rx="16" ry="58" fill="url(#lb2a)" opacity=".55" transform="rotate(180 118 118)"/>
+    <ellipse cx="118" cy="118" rx="13" ry="42" fill="url(#lb2a)" opacity=".78" transform="rotate(18 118 118)"/>
+    <ellipse cx="118" cy="118" rx="13" ry="42" fill="url(#lb2b)" opacity=".76" transform="rotate(54 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb2a)" opacity=".90" transform="rotate(0 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb2b)" opacity=".88" transform="rotate(45 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb2a)" opacity=".86" transform="rotate(90 118 118)"/>
+    <ellipse cx="118" cy="118" rx="9" ry="28" fill="url(#lb2b)" opacity=".84" transform="rotate(135 118 118)"/>
+    <circle cx="118" cy="118" r="17" fill="#f9e07a" opacity=".88"/>
+    <circle cx="118" cy="118" r="11" fill="#f0c040" opacity=".92"/>
+    <circle cx="113" cy="114" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="120" cy="113" r="2.8" fill="#c47c10" opacity=".82"/>
+    <circle cx="116" cy="121" r="2.8" fill="#c47c10" opacity=".80"/>
+  </g>
+</svg>
+
+<!-- ══ LOTUS SIDE LEFT (mini) ══ -->
+<svg class="fz lotus-ml" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lm1a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="40%" stop-color="#f06292"/>
+      <stop offset="100%" stop-color="#880e4f"/>
+    </radialGradient>
+    <filter id="lm1S"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#880e4f" flood-opacity=".2"/></filter>
+  </defs>
+  <g filter="url(#lm1S)">
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm1a)" opacity=".75" transform="rotate(0 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm1a)" opacity=".72" transform="rotate(45 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm1a)" opacity=".68" transform="rotate(90 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm1a)" opacity=".64" transform="rotate(135 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm1a)" opacity=".90" transform="rotate(22 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm1a)" opacity=".85" transform="rotate(67 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm1a)" opacity=".80" transform="rotate(112 50 50)"/>
+    <circle cx="50" cy="50" r="10" fill="#f9e07a" opacity=".88"/>
+    <circle cx="50" cy="50" r="6" fill="#f0c040" opacity=".92"/>
+  </g>
+</svg>
+
+<!-- ══ LOTUS SIDE RIGHT (mini) ══ -->
+<svg class="fz lotus-mr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lm2a" cx="50%" cy="18%" r="82%">
+      <stop offset="0%" stop-color="#fce4ec"/>
+      <stop offset="40%" stop-color="#e57373"/>
+      <stop offset="100%" stop-color="#b71c1c"/>
+    </radialGradient>
+    <filter id="lm2S"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#880e4f" flood-opacity=".2"/></filter>
+  </defs>
+  <g filter="url(#lm2S)">
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm2a)" opacity=".75" transform="rotate(0 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm2a)" opacity=".72" transform="rotate(45 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm2a)" opacity=".68" transform="rotate(90 50 50)"/>
+    <ellipse cx="50" cy="50" rx="11" ry="32" fill="url(#lm2a)" opacity=".64" transform="rotate(135 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm2a)" opacity=".90" transform="rotate(22 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm2a)" opacity=".85" transform="rotate(67 50 50)"/>
+    <ellipse cx="50" cy="50" rx="8" ry="22" fill="url(#lm2a)" opacity=".80" transform="rotate(112 50 50)"/>
+    <circle cx="50" cy="50" r="10" fill="#f9e07a" opacity=".88"/>
+    <circle cx="50" cy="50" r="6" fill="#f0c040" opacity=".92"/>
+  </g>
+</svg>
+
+<!-- ══ GOLD FILIGREE CORNERS ══ -->
+<svg class="fig fig-tl" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e0e8ff"/><stop offset="38%" stop-color="#a0b8d8"/><stop offset="68%" stop-color="#6080a8"/><stop offset="100%" stop-color="#c0d4f0"/></linearGradient></defs>
+  <path d="M9 9 L88 9" stroke="url(#fg1)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 L9 88" stroke="url(#fg1)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 Q30 9 30 30" stroke="url(#fg1)" stroke-width="1.6" fill="none"/>
+  <path d="M9 9 Q9 30 30 30" stroke="url(#fg1)" stroke-width="1.6" fill="none"/>
+  <circle cx="9"  cy="9"  r="4.5" fill="url(#fg1)"/>
+  <circle cx="30" cy="30" r="3.2" fill="url(#fg1)" opacity=".7"/>
+  <circle cx="48" cy="9"  r="2.2" fill="url(#fg1)" opacity=".5"/>
+  <circle cx="9"  cy="48" r="2.2" fill="url(#fg1)" opacity=".5"/>
+  <path d="M38 9 Q43 4 48 9 Q43 14 38 9Z" fill="url(#fg1)" opacity=".72"/>
+  <path d="M9 38 Q4 43 9 48 Q14 43 9 38Z" fill="url(#fg1)" opacity=".72"/>
+</svg>
+<svg class="fig fig-tr" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="fg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e0e8ff"/><stop offset="38%" stop-color="#a0b8d8"/><stop offset="68%" stop-color="#6080a8"/><stop offset="100%" stop-color="#c0d4f0"/></linearGradient></defs>
+  <path d="M9 9 L88 9" stroke="url(#fg2)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 L9 88" stroke="url(#fg2)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 Q30 9 30 30" stroke="url(#fg2)" stroke-width="1.6" fill="none"/>
+  <path d="M9 9 Q9 30 30 30" stroke="url(#fg2)" stroke-width="1.6" fill="none"/>
+  <circle cx="9" cy="9" r="4.5" fill="url(#fg2)"/>
+  <circle cx="30" cy="30" r="3.2" fill="url(#fg2)" opacity=".7"/>
+  <path d="M38 9 Q43 4 48 9 Q43 14 38 9Z" fill="url(#fg2)" opacity=".72"/>
+  <path d="M9 38 Q4 43 9 48 Q14 43 9 38Z" fill="url(#fg2)" opacity=".72"/>
+</svg>
+<svg class="fig fig-bl" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="fg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e0e8ff"/><stop offset="38%" stop-color="#a0b8d8"/><stop offset="68%" stop-color="#6080a8"/><stop offset="100%" stop-color="#c0d4f0"/></linearGradient></defs>
+  <path d="M9 9 L88 9" stroke="url(#fg3)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 L9 88" stroke="url(#fg3)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 Q30 9 30 30" stroke="url(#fg3)" stroke-width="1.6" fill="none"/>
+  <path d="M9 9 Q9 30 30 30" stroke="url(#fg3)" stroke-width="1.6" fill="none"/>
+  <circle cx="9" cy="9" r="4.5" fill="url(#fg3)"/>
+  <circle cx="30" cy="30" r="3.2" fill="url(#fg3)" opacity=".7"/>
+  <path d="M38 9 Q43 4 48 9 Q43 14 38 9Z" fill="url(#fg3)" opacity=".72"/>
+  <path d="M9 38 Q4 43 9 48 Q14 43 9 38Z" fill="url(#fg3)" opacity=".72"/>
+</svg>
+<svg class="fig fig-br" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="fg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e0e8ff"/><stop offset="38%" stop-color="#a0b8d8"/><stop offset="68%" stop-color="#6080a8"/><stop offset="100%" stop-color="#c0d4f0"/></linearGradient></defs>
+  <path d="M9 9 L88 9" stroke="url(#fg4)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 L9 88" stroke="url(#fg4)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 9 Q30 9 30 30" stroke="url(#fg4)" stroke-width="1.6" fill="none"/>
+  <path d="M9 9 Q9 30 30 30" stroke="url(#fg4)" stroke-width="1.6" fill="none"/>
+  <circle cx="9" cy="9" r="4.5" fill="url(#fg4)"/>
+  <circle cx="30" cy="30" r="3.2" fill="url(#fg4)" opacity=".7"/>
+  <path d="M38 9 Q43 4 48 9 Q43 14 38 9Z" fill="url(#fg4)" opacity=".72"/>
+  <path d="M9 38 Q4 43 9 48 Q14 43 9 38Z" fill="url(#fg4)" opacity=".72"/>
+</svg>
+
+<!-- Floating petals -->
+<div class="petal" style="width:7px;height:10px;background:radial-gradient(#fce4ec,#f06292);top:20%;left:9%;animation-duration:5.5s;animation-delay:0s;opacity:.65;"></div>
+<div class="petal" style="width:5px;height:8px;background:radial-gradient(#d0e4ff,#8090c0);top:32%;right:8%;animation-duration:6.5s;animation-delay:1.8s;opacity:.55;"></div>
+<div class="petal" style="width:6px;height:9px;background:radial-gradient(#fce4ec,#c2185b);top:60%;left:7%;animation-duration:5s;animation-delay:.9s;opacity:.5;"></div>
+<div class="petal" style="width:4px;height:6px;background:radial-gradient(#e0eeff,#a0b0d8);top:72%;right:10%;animation-duration:7s;animation-delay:2.5s;opacity:.6;"></div>
+<div class="petal" style="width:5px;height:7px;background:radial-gradient(#fce4ec,#e91e63);top:14%;left:48%;animation-duration:6s;animation-delay:1.2s;opacity:.5;"></div>
+<div class="petal" style="width:4px;height:6px;background:radial-gradient(#d8e8ff,#6080b0);top:82%;left:32%;animation-duration:7.5s;animation-delay:3.2s;opacity:.55;"></div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div class="content">
+
+  <!-- Crown ornament -->
+  <div class="fu" style="animation-delay:.05s;margin-bottom:18px;">
+    <svg width="220" height="42" viewBox="0 0 220 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="co1" x1="0" y1="0" x2="220" y2="0">
+          <stop offset="0%" stop-color="transparent"/>
+          <stop offset="18%" stop-color="#a0b8d8"/>
+          <stop offset="50%" stop-color="#e91e63"/>
+          <stop offset="82%" stop-color="#a0b8d8"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </linearGradient>
+      </defs>
+      <path d="M6 22 Q55 7 110 22 Q165 37 214 22" stroke="url(#co1)" stroke-width="1.5" fill="none"/>
+      <path d="M22 22 Q55 12 110 22 Q165 32 198 22" stroke="url(#co1)" stroke-width=".7" fill="none" opacity=".5"/>
+      <path d="M96 22 Q103 7 110 4 Q117 7 124 22" stroke="url(#co1)" stroke-width="1.3" fill="none"/>
+      <circle cx="110" cy="4" r="4" fill="url(#co1)"/>
+      <circle cx="76"  cy="13" r="2.8" fill="url(#co1)" opacity=".7"/>
+      <circle cx="144" cy="13" r="2.8" fill="url(#co1)" opacity=".7"/>
+      <path d="M68 13 Q72 8 76 13 Q72 18 68 13Z" fill="url(#co1)" opacity=".65"/>
+      <path d="M140 13 Q144 8 148 13 Q144 18 140 13Z" fill="url(#co1)" opacity=".65"/>
+    </svg>
+  </div>
+
+  <p class="pre-header fu" style="animation-delay:.1s;">✦ You Are Cordially Invited to Celebrate the ✦</p>
+
+  <!-- Silver Jubilee number -->
+  <div class="num-wrap fu" style="animation-delay:.2s;">
+    <span class="num-31">31</span><span class="num-sup">st</span>
+  </div>
+
+  <div class="badge-pill fu ripple-host" style="animation-delay:.3s;" id="jubileeBadge">
+    <div class="gem"></div>
+    <span>Silver Jubilee</span>
+    <div class="gem"></div>
+  </div>
+
+  <div class="event-title fu" style="animation-delay:.4s;">A Celebration of Love</div>
+
+  <div class="div-line fu" style="animation-delay:.45s;">
+    <div class="div-rule"></div>
+    <div class="div-center">
+      <div class="div-dia"></div>
+      <span class="div-of">Of</span>
+      <div class="div-dia"></div>
+    </div>
+    <div class="div-rule"></div>
+  </div>
+
+  <div class="names fu" style="animation-delay:.5s;">Anita &amp; Ramesh</div>
+
+  <span class="heart fu" style="animation-delay:.55s;" id="heartBtn">♡</span>
+
+  <p class="tagline fu" style="animation-delay:.6s;">
+    Thirty-one beautiful years of love, laughter,<br>
+    faith and unbreakable togetherness —<br>
+    and every year more precious than the last.
+  </p>
+
+  <!-- ══ 1. DATE TAB (compact) ══ -->
+  <div class="date-tab fu ripple-host" style="animation-delay:.62s;" id="dateTabEl" title="Tap to reveal calendar">
+    <div class="date-tab-label">✦ Event Date ✦</div>
+    <div class="date-inner">
+      <div class="date-piece">
+        <div class="date-piece-num">02</div>
+        <div class="date-piece-lbl">Day</div>
+      </div>
+      <div class="date-sep">·</div>
+      <div class="date-piece">
+        <div class="date-piece-num">May</div>
+        <div class="date-piece-lbl">Month</div>
+      </div>
+      <div class="date-sep">·</div>
+      <div class="date-piece">
+        <div class="date-piece-num">2026</div>
+        <div class="date-piece-lbl">Year</div>
+      </div>
+    </div>
+    <div class="date-full-text">Saturday, 2nd May 2026 &nbsp;•&nbsp; <span id="daysAwayLabel" style="color:#a0c0e8;font-style:italic;"></span></div>
+    <!-- Mini calendar toggle -->
+    <div id="miniCal" style="display:none;margin-top:12px;">
+      <div style="font-family:'Cinzel Decorative',serif;font-size:7px;letter-spacing:3px;color:#6070a8;text-transform:uppercase;margin-bottom:8px;">May 2026</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;max-width:230px;margin:0 auto;">
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">S</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">M</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">T</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">W</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">T</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">F</div>
+        <div style="font-family:'Cinzel Decorative',serif;font-size:6px;color:#5060a0;text-align:center;padding:2px;">S</div>
+        <div></div><div></div><div></div><div></div><div></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">1</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;background:linear-gradient(135deg,#e91e63,#c2185b);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 0 10px rgba(233,30,99,.6);font-weight:700;">2</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">3</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">4</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">5</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">6</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">7</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">8</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">9</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#8090b8;text-align:center;padding:2px;">10</div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:#7080a0;margin-top:8px;">✦ Tap to collapse ✦</div>
+    </div>
+    <div id="calHint" style="font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:#5060a0;margin-top:6px;opacity:.7;">Tap to reveal calendar</div>
+  </div>
+
+  <!-- ══ 2. COUNTDOWN TAB ══ -->
+  <div class="countdown-tab fu" style="animation-delay:.65s;">
+    <div class="countdown-tab-label">✦ Countdown to Celebration ✦</div>
+    <div class="countdown-wrap" id="countdownWrap">
+      <div class="cd-block ripple-host" id="cd-days"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-block ripple-host" id="cd-hours"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-block ripple-host" id="cd-mins"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-block ripple-host" id="cd-secs"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Seconds</div></div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:#6070a0;margin-top:10px;letter-spacing:.3px;" id="cdMessage">Until the celebration begins…</div>
+  </div>
+
+  <!-- ══ 3. LIVE CLOCK TAB (compact, matching date-tab style) ══ -->
+  <div class="date-tab fu" style="animation-delay:.68s;margin-bottom:14px;" id="clockTabEl">
+    <div class="date-tab-label">✦ Live Clock ✦</div>
+    <div class="date-inner" style="gap:12px;">
+      <!-- HH -->
+      <div class="date-piece">
+        <div class="date-piece-num" id="clockHH" style="min-width:2ch;text-align:center;">--</div>
+        <div class="date-piece-lbl">Hours</div>
+      </div>
+      <div class="date-sep" style="animation:colonBlink 1s step-end infinite;">:</div>
+      <!-- MM -->
+      <div class="date-piece">
+        <div class="date-piece-num" id="clockMM" style="min-width:2ch;text-align:center;">--</div>
+        <div class="date-piece-lbl">Minutes</div>
+      </div>
+      <div class="date-sep" style="animation:colonBlink 1s step-end infinite;">:</div>
+      <!-- SS -->
+      <div class="date-piece">
+        <div class="date-piece-num" id="clockSS" style="min-width:2ch;text-align:center;font-size:22px;opacity:.8;">--</div>
+        <div class="date-piece-lbl">Seconds</div>
+      </div>
+      <!-- AM/PM + LIVE badge -->
+      <div class="date-piece" style="gap:4px;">
+        <div id="clockAMPM" style="font-family:'Cinzel Decorative',serif;font-size:16px;font-weight:700;background:linear-gradient(135deg,#70a0d0,#a0c8e8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">--</div>
+        <div class="live-badge" style="margin-top:2px;"><div class="live-dot"></div>Live</div>
+      </div>
+    </div>
+    <div class="date-full-text" style="margin-top:6px;">
+      <span id="clockDay" style="color:#8090b8;">---</span>
+      &nbsp;·&nbsp;
+      <span id="clockNote" style="color:#6070a0;">India Standard Time</span>
+    </div>
+    <!-- Toggle buttons -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;">
+      <button id="toggleFormat" onclick="toggleClockFormat()" style="font-family:'Cinzel Decorative',serif;font-size:6.5px;letter-spacing:2px;color:#a0c0e8;background:rgba(100,160,255,.1);border:1px solid rgba(100,160,255,.3);border-radius:20px;padding:4px 12px;cursor:pointer;transition:all .25s ease;text-transform:uppercase;">12 hr</button>
+      <button id="toggleTZ" onclick="toggleTimezone()" style="font-family:'Cinzel Decorative',serif;font-size:6.5px;letter-spacing:2px;color:#a0c0e8;background:rgba(100,160,255,.1);border:1px solid rgba(100,160,255,.3);border-radius:20px;padding:4px 12px;cursor:pointer;transition:all .25s ease;text-transform:uppercase;">IST</button>
+    </div>
+  </div>
+
+  <!-- ══ DETAIL CARDS ══ -->
+  <div class="cards-grid fu" style="animation-delay:.70s;">
+    <div class="dc ripple-host">
+      <div class="ic">🪷</div>
+      <div class="lbl">Time</div>
+      <div class="val">6:00 PM</div>
+      <div class="sub">Onwards</div>
+    </div>
+    <div class="dc ripple-host">
+      <div class="ic">🎊</div>
+      <div class="lbl">Dress Code</div>
+      <div class="val">Festive</div>
+      <div class="sub">Ethnic / Formals</div>
+    </div>
+    <div class="dc ripple-host">
+      <div class="ic">🥂</div>
+      <div class="lbl">Occasion</div>
+      <div class="val">Silver</div>
+      <div class="sub">Jubilee Gala</div>
+    </div>
+  </div>
+
+  <!-- ══ RSVP ROW ══ -->
+  <div class="rsvp-row fu" style="animation-delay:.75s;">
+    <div class="rsvp-card ripple-host">
+      <div class="ic">🍽️</div>
+      <div class="lbl">Dinner</div>
+      <div class="val">Special Menu</div>
+      <div class="sub">Veg Banquet &amp; Fine Dining</div>
+    </div>
+    <div class="rsvp-card ripple-host">
+      <div class="ic">🎵</div>
+      <div class="lbl">Evening</div>
+      <div class="val">Music &amp; Dance</div>
+      <div class="sub">Live Entertainment &amp; Memories</div>
+    </div>
+  </div>
+
+  <!-- ══ GUEST DETAILS TAB ══ -->
+  <div class="guest-box fu" style="animation-delay:.80s;">
+    <div class="guest-tab-label">✦ Personal Invitation ✦</div>
+    <div class="guest-main">Dear Valued Guest</div>
+    <div class="guest-sub">Your presence graces this celebration with joy</div>
+    <div class="guest-row">
+      <span class="guest-chip">🎟️ Table Reserved</span>
+      <span class="guest-chip">🥂 Complimentary Welcome Drink</span>
+      <span class="guest-chip">📸 Photo Booth Access</span>
+    </div>
+  </div>
+
+  <!-- ══ VENUE + ADDRESS TAB ══ -->
+  <div class="addr-box fu" style="animation-delay:.85s;">
+    <div class="addr-tab-label">✦ Venue & Address ✦</div>
+    <div class="addr-venue">Blueberry Restaurant &amp; Banquet</div>
+    <p class="addr-text">
+      Best Family Restaurant &amp; Party Hall in Nikol<br>
+      Ring Road, opp. Torrent Sub-Station<br>
+      <strong>Nikol, Ahmedabad, Gujarat – 380049</strong>
+    </p>
+    <a class="map-btn" href="https://maps.app.goo.gl/3RDS21UVLkLpbf3e7?g_st=ic" target="_blank">
+      📍 &nbsp;Open in Google Maps
+    </a>
+  </div>
+
+  <!-- ══ CONTACT DETAILS TAB ══ -->
+  <div class="addr-box fu" style="animation-delay:.87s;">
+    <div class="addr-tab-label">✦ For Queries &amp; RSVP ✦</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px;" id="contactGrid">
+
+      <a href="tel:+918238429386" class="contact-card">
+        <div class="contact-avatar">👨‍💼</div>
+        <div class="contact-name">Ansh Rajput</div>
+        <div class="contact-phone">+91 82384 29386</div>
+        <div class="contact-call-btn">📞 Call</div>
+      </a>
+
+      <a href="tel:+918128049889" class="contact-card">
+        <div class="contact-avatar">👩</div>
+        <div class="contact-name">Khushi Rajput</div>
+        <div class="contact-phone">+91 81280 49889</div>
+        <div class="contact-call-btn">📞 Call</div>
+      </a>
+
+      <a href="tel:+919978535018" class="contact-card">
+        <div class="contact-avatar">🎩</div>
+        <div class="contact-name">Ramesh Rajput</div>
+        <div class="contact-phone">+91 99785 35018</div>
+        <div class="contact-call-btn">📞 Call</div>
+      </a>
+
+      <a href="tel:+919825057407" class="contact-card">
+        <div class="contact-avatar">👸</div>
+        <div class="contact-name">Anita Rajput</div>
+        <div class="contact-phone">+91 98250 57407</div>
+        <div class="contact-call-btn">📞 Call</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Bottom ornament divider -->
+  <svg width="260" height="36" viewBox="0 0 260 36" fill="none" style="margin-bottom:14px;" class="fu" style="animation-delay:.87s;">
+    <defs>
+      <linearGradient id="bo1" x1="0" y1="0" x2="260" y2="0">
+        <stop offset="0%" stop-color="transparent"/>
+        <stop offset="22%" stop-color="#a0b8d8"/>
+        <stop offset="50%" stop-color="#e91e63"/>
+        <stop offset="78%" stop-color="#a0b8d8"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+      <radialGradient id="bopk" cx="50%" cy="20%" r="80%">
+        <stop offset="0%" stop-color="#fce4ec"/>
+        <stop offset="55%" stop-color="#f06292"/>
+        <stop offset="100%" stop-color="#c2185b"/>
+      </radialGradient>
+    </defs>
+    <path d="M6 18 Q65 6 130 18 Q195 30 254 18" stroke="url(#bo1)" stroke-width="1.4" fill="none"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".7"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".65" transform="rotate(60 130 12)"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".60" transform="rotate(120 130 12)"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".55" transform="rotate(180 130 12)"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".50" transform="rotate(240 130 12)"/>
+    <ellipse cx="130" cy="12" rx="8" ry="14" fill="url(#bopk)" opacity=".45" transform="rotate(300 130 12)"/>
+    <circle cx="130" cy="12" r="5.5" fill="#fce4ec" opacity=".9"/>
+    <rect x="84"  y="15" width="7" height="7" fill="url(#bo1)" opacity=".5" transform="rotate(45 87 18)"/>
+    <rect x="169" y="15" width="7" height="7" fill="url(#bo1)" opacity=".5" transform="rotate(45 172 18)"/>
+  </svg>
+
+  <!-- ══ QR CODE + WHATSAPP ══ -->
+  <div class="qr-section fu" style="animation-delay:.88s;">
+    <div class="qr-tab-label">✦ Scan & Share Invitation ✦</div>
+    <div class="qr-inner">
+      <div class="qr-wrap">
+        <canvas id="qrCanvas" width="120" height="120"></canvas>
+        <div class="qr-caption">Scan for Directions</div>
+      </div>
+      <div class="qr-info">
+        <div class="qr-info-title">Share This Invitation</div>
+        <p class="qr-info-text">
+          Scan the QR code to open<br>
+          the venue directly in<br>
+          Google Maps &amp; get directions.<br>
+          Or tap WhatsApp to share!
+        </p>
+        <a class="wa-btn" id="waShareBtn" href="#" target="_blank">
+          💬 &nbsp;Share on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-script fu" style="animation-delay:.9s;">
+    Join us for an evening of celebration, fine dining, music &amp; cherished memories.
+  </p>
+
+  <svg width="170" height="22" viewBox="0 0 170 22" fill="none" style="margin:10px auto 12px;display:block;" class="fu" style="animation-delay:.93s;">
+    <defs><linearGradient id="fo1" x1="0" y1="0" x2="170" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="50%" stop-color="#e91e63"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+    <path d="M5 11 Q42 4 85 11 Q128 18 165 11" stroke="url(#fo1)" stroke-width="1.1" fill="none"/>
+    <circle cx="85" cy="7" r="3.5" fill="#c2185b" opacity=".6"/>
+  </svg>
+
+  <p class="footer-caps fu" style="animation-delay:.96s;">✦ Your Presence Shall Make Our Celebration Complete ✦</p>
+
+  <svg width="190" height="28" viewBox="0 0 190 28" fill="none" style="margin-top:14px;opacity:.65;" class="fu" style="animation-delay:1s;">
+    <defs><linearGradient id="fbo1" x1="0" y1="0" x2="190" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="38%" stop-color="#a0b8d8"/><stop offset="62%" stop-color="#e91e63"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+    <path d="M5 14 Q47 5 95 14 Q143 23 185 14" stroke="url(#fbo1)" stroke-width="1.3" fill="none"/>
+    <path d="M82 14 Q95 6 108 14 Q95 22 82 14Z" fill="url(#fbo1)" opacity=".5"/>
+    <circle cx="57"  cy="14" r="2.2" fill="#e91e63" opacity=".42"/>
+    <circle cx="133" cy="14" r="2.2" fill="#e91e63" opacity=".42"/>
+  </svg>
+
+</div><!-- end content -->
+</div><!-- end card -->
+
+<script>
+/* ══ QR + WHATSAPP ══ */
+(function() {
+  var MAPS_URL = 'https://maps.app.goo.gl/3RDS21UVLkLpbf3e7';
+  var canvas = document.getElementById('qrCanvas');
+  var img = document.createElement('img');
+  img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&color=9B1B30&bgcolor=ffffff&data=' + encodeURIComponent(MAPS_URL) + '&margin=4';
+  img.width = 120; img.height = 120; img.style.borderRadius = '6px'; img.style.display = 'block';
+  img.alt = 'Scan for Venue Location';
+  canvas.parentNode.replaceChild(img, canvas);
+
+  var msg = encodeURIComponent(
+    '🪷 *Silver Jubilee — Anita & Ramesh* 🪷\n\n' +
+    '🗓️ *Date:* Saturday, 2nd May 2026\n' +
+    '🕕 *Time:* 6:00 PM Onwards\n' +
+    '📍 *Venue:* Venus–Blueberry Restaurant & Banquet\n' +
+    'Ring Road, opp. Torrent Sub-Station, Nikol, Ahmedabad\n\n' +
+    '🗺️ *Get Directions:*\n' + MAPS_URL + '\n\n' +
+    '🙏 Your presence will make our 31st anniversary celebration truly special!'
+  );
+  document.getElementById('waShareBtn').href = 'https://wa.me/?text=' + msg;
+})();
+
+/* ══ LIVE CLOCK (refined, interactive) ══ */
+var clockIs24h = false;
+var clockShowUTC = false;
+var clockDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function updateClock() {
+  var now = clockShowUTC ? new Date(new Date().toLocaleString('en-US', {timeZone:'UTC'})) : new Date();
+  var h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+  var dayName = clockDays[now.getDay()];
+  var displayH, ampm;
+  if (clockIs24h) {
+    displayH = String(h).padStart(2,'0');
+    ampm = 'HRS';
+    document.getElementById('clockAMPM').style.display = 'none';
+  } else {
+    ampm = h >= 12 ? 'PM' : 'AM';
+    displayH = String(h % 12 || 12).padStart(2,'0');
+    document.getElementById('clockAMPM').style.display = '';
+    document.getElementById('clockAMPM').textContent = ampm;
+  }
+  document.getElementById('clockHH').textContent = displayH;
+  document.getElementById('clockMM').textContent = String(m).padStart(2,'0');
+  document.getElementById('clockSS').textContent = String(s).padStart(2,'0');
+  document.getElementById('clockDay').textContent = dayName;
+  // Also update legacy liveClock if present
+  var lc = document.getElementById('liveClock');
+  if (lc) lc.textContent = displayH + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + (clockIs24h ? '' : ' ' + ampm);
+}
+
+function toggleClockFormat() {
+  clockIs24h = !clockIs24h;
+  document.getElementById('toggleFormat').textContent = clockIs24h ? '24 hr' : '12 hr';
+  updateClock();
+}
+function toggleTimezone() {
+  clockShowUTC = !clockShowUTC;
+  document.getElementById('toggleTZ').textContent = clockShowUTC ? 'UTC' : 'IST';
+  document.getElementById('clockNote').textContent = clockShowUTC ? 'Coordinated Universal Time · UTC+0' : 'India Standard Time';
+  updateClock();
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+/* ══ DATE TAB — interactive (toggle mini calendar) ══ */
+(function() {
+  var eventDate = new Date('2026-05-02T18:00:00');
+  var now = new Date();
+  var diffDays = Math.ceil((eventDate - now) / (1000*60*60*24));
+  var label = diffDays > 0 ? diffDays + ' days away' : (diffDays === 0 ? 'Today!' : 'Celebration has passed!');
+  var el = document.getElementById('daysAwayLabel');
+  if (el) el.textContent = label;
+
+  var tab = document.getElementById('dateTabEl');
+  var cal = document.getElementById('miniCal');
+  var hint = document.getElementById('calHint');
+  if (tab && cal) {
+    tab.addEventListener('click', function() {
+      var open = cal.style.display !== 'none';
+      cal.style.display = open ? 'none' : 'block';
+      if (hint) hint.style.display = open ? '' : 'none';
+    });
+  }
+})();
+
+/* ══ COUNTDOWN ══ */
+function updateCountdown() {
+  var eventDate = new Date('2026-05-02T18:00:00');
+  var now = new Date();
+  var diff = eventDate - now;
+
+  var dEl = document.getElementById('cd-d');
+  var hEl = document.getElementById('cd-h');
+  var mEl = document.getElementById('cd-m');
+  var sEl = document.getElementById('cd-s');
+  var msgEl = document.getElementById('cdMessage');
+
+  if (diff <= 0) {
+    dEl.textContent = '🪷';
+    hEl.textContent = '🪷';
+    mEl.textContent = '🪷';
+    sEl.textContent = '🪷';
+    if (msgEl) msgEl.textContent = '🎉 The celebration is here! Welcome!';
+    document.querySelectorAll('.cd-block').forEach(function(b){b.classList.add('cd-event-past');});
+    return;
+  }
+  var days  = Math.floor(diff / (1000*60*60*24));
+  var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  var mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+  var secs  = Math.floor((diff % (1000*60)) / 1000);
+  dEl.textContent = String(days).padStart(2,'0');
+  hEl.textContent = String(hours).padStart(2,'0');
+  mEl.textContent = String(mins).padStart(2,'0');
+  sEl.textContent = String(secs).padStart(2,'0');
+  if (msgEl) {
+    if (days === 0 && hours === 0) msgEl.textContent = 'Almost time — the celebration begins soon! 🪷';
+    else if (days === 0) msgEl.textContent = 'Celebration is today! See you tonight! 🎊';
+    else if (days === 1) msgEl.textContent = 'Just one more day — the joy begins tomorrow! 🌸';
+    else msgEl.textContent = 'Until the celebration begins on 2nd May 2026…';
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ══ RIPPLE ON CLICK ══ */
+document.querySelectorAll('.ripple-host').forEach(function(el) {
+  el.addEventListener('click', function(e) {
+    var rect = el.getBoundingClientRect();
+    var circle = document.createElement('span');
+    circle.classList.add('ripple-circle');
+    var size = Math.max(rect.width, rect.height);
+    circle.style.width = circle.style.height = size + 'px';
+    circle.style.left = (e.clientX - rect.left - size/2) + 'px';
+    circle.style.top  = (e.clientY - rect.top  - size/2) + 'px';
+    el.appendChild(circle);
+    setTimeout(function(){ circle.remove(); }, 700);
+  });
+});
+
+/* ══ HEART BURST ══ */
+var heartBtn = document.getElementById('heartBtn');
+var heartCount = 0;
+heartBtn.addEventListener('click', function() {
+  heartCount++;
+  var colors = ['#e91e63','#f06292','#c2185b','#ff4081','#f48fb1'];
+  for (var i = 0; i < 8; i++) {
+    (function(i) {
+      setTimeout(function() {
+        var spark = document.createElement('div');
+        spark.style.cssText = [
+          'position:fixed','pointer-events:none','z-index:9999',
+          'width:10px','height:10px','border-radius:50%',
+          'background:' + colors[i % colors.length],
+          'left:' + (heartBtn.getBoundingClientRect().left + 12) + 'px',
+          'top:'  + (heartBtn.getBoundingClientRect().top  + 12) + 'px',
+          'animation:heartSpark .8s ease-out forwards',
+          '--dx:' + (Math.random()*100-50) + 'px',
+          '--dy:' + (Math.random()*100-80) + 'px'
+        ].join(';');
+        document.body.appendChild(spark);
+        setTimeout(function(){ spark.remove(); }, 800);
+      }, i * 60);
+    })(i);
+  }
+  if (heartCount >= 3) {
+    heartBtn.style.color = '#c2185b';
+    heartBtn.style.transform = 'scale(1.5)';
+    setTimeout(function(){ heartBtn.style.transform = ''; }, 400);
+    heartCount = 0;
+  }
+});
+
+/* Keyframe injection for heart spark */
+var style = document.createElement('style');
+style.textContent = '@keyframes heartSpark { 0%{transform:translate(0,0) scale(1);opacity:1;} 100%{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0;} }';
+document.head.appendChild(style);
+
+/* ══ CURSOR SPARKLE (desktop only) ══ */
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', function(e) {
+    if (Math.random() > 0.88) {
+      var spark = document.createElement('div');
+      spark.className = 'cursor-spark';
+      spark.style.left = (e.clientX - 3) + 'px';
+      spark.style.top  = (e.clientY - 3) + 'px';
+      document.body.appendChild(spark);
+      setTimeout(function(){ spark.remove(); }, 600);
+    }
+  });
+}
+
+/* ══ TOUCH RIPPLE (mobile) ══ */
+document.getElementById('mainCard').addEventListener('touchstart', function(e) {
+  var t = e.touches[0];
+  var spark = document.createElement('div');
+  spark.style.cssText = [
+    'position:fixed','pointer-events:none','z-index:9999',
+    'width:40px','height:40px','border-radius:50%',
+    'background:radial-gradient(rgba(180,210,255,.5),transparent)',
+    'left:'+(t.clientX-20)+'px','top:'+(t.clientY-20)+'px',
+    'animation:touchRipple .5s ease-out forwards'
+  ].join(';');
+  document.body.appendChild(spark);
+  setTimeout(function(){ spark.remove(); }, 500);
+}, { passive: true });
+
+var s2 = document.createElement('style');
+s2.textContent = '@keyframes touchRipple { 0%{transform:scale(0);opacity:.8;} 100%{transform:scale(3);opacity:0;} }';
+document.head.appendChild(s2);
+</script>
+</body>
+</html>
